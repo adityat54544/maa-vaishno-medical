@@ -29,17 +29,33 @@ document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', 
     navMenu.classList.remove('active');
 }));
 
-// Intersection Observer for scroll animations
+// Enhanced Intersection Observer for scroll animations
 const observerOptions = {
-    threshold: 0.1,
+    threshold: 0.15,
     rootMargin: '0px 0px -50px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            entry.target.classList.add('animate-fade-in');
+            
+            // Apply specific animation classes based on element type
+            if (entry.target.classList.contains('trust-item')) {
+                entry.target.classList.add('slideInLeft');
+            } else if (entry.target.classList.contains('doctor-card')) {
+                entry.target.classList.add('slideInRight');
+            } else if (entry.target.classList.contains('service-card')) {
+                entry.target.classList.add('fadeInUp');
+            } else if (entry.target.classList.contains('health-tip-card')) {
+                entry.target.classList.add('scaleIn');
+            } else if (entry.target.classList.contains('contact-card')) {
+                entry.target.classList.add('slideInLeft');
+            } else if (entry.target.classList.contains('testimonial-card')) {
+                entry.target.classList.add('slideInRight');
+            } else {
+                entry.target.classList.add('fadeInUp');
+            }
         }
     });
 }, observerOptions);
@@ -52,9 +68,36 @@ document.querySelectorAll('section').forEach(section => {
     observer.observe(section);
 });
 
-// Observe cards for lift animations
-document.querySelectorAll('.cardLift').forEach(card => {
-    card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+// Observe cards for enhanced 3D animations
+document.querySelectorAll('.cardLift, .service-card, .health-tip-card, .contact-card, .testimonial-card, .trust-item, .doctor-card').forEach(card => {
+    card.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+    card.style.transform = 'translateZ(0)';
+    card.style.perspective = '1000px';
+    card.style.transformStyle = 'preserve-3d';
+    observer.observe(card);
+});
+
+// Enhanced scroll-triggered animations with staggered effects
+const staggerObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }, index * 100);
+        }
+    });
+}, {
+    threshold: 0.2,
+    rootMargin: '0px 0px -30px 0px'
+});
+
+// Observe grid items for staggered animations
+document.querySelectorAll('.trust-grid > *, .doctors-grid > *, .services-grid > *, .health-tips-grid > *, .products-grid > *, .testimonials-grid > *').forEach(item => {
+    item.style.opacity = '0';
+    item.style.transform = 'translateY(40px)';
+    item.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+    staggerObserver.observe(item);
 });
 
 // Observe service icons for floating animations
