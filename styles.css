@@ -447,68 +447,51 @@ h1, h2, h3, h4, h5, h6 {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Animation classes */
+/* Animation classes - SIMPLIFIED */
 .fadeUp {
-    animation: fadeInUp 0.8s ease-out forwards;
+    animation: fadeInUp 0.4s ease-out forwards;
 }
 
-.slideInLeft {
-    animation: slideInLeft 0.8s ease-out forwards;
-}
-
-.slideInRight {
-    animation: slideInRight 0.8s ease-out forwards;
-}
-
+.slideInLeft,
+.slideInRight,
 .scaleIn {
-    animation: scaleIn 0.6s ease-out forwards;
+    animation: fadeInUp 0.4s ease-out forwards;
 }
 
 .pulseCTA {
-    animation: pulseCTA 2s infinite;
+    animation: pulseCTA 4s infinite ease-in-out;
 }
 
 .floatingIcon {
-    animation: floatingIcon 3s ease-in-out infinite;
+    animation: floatingIcon 2s ease-in-out infinite;
 }
 
 .cardLift {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
 }
 
 .cardLift:hover {
-    animation: cardLift 0.3s ease-out;
+    transform: translateY(-5px);
     box-shadow: var(--shadow-hover);
 }
 
-/* Enhanced Animation Classes for Scroll Effects */
+/* Standardized animation classes */
 .animate-fade-in {
-    animation: fadeInUp 0.8s ease-out forwards;
+    animation: fadeInUp 0.4s ease-out forwards;
 }
 
-.animate-slide-left {
-    animation: slideInLeft 0.8s ease-out forwards;
-}
-
-.animate-slide-right {
-    animation: slideInRight 0.8s ease-out forwards;
-}
-
+.animate-slide-left,
+.animate-slide-right,
 .animate-scale-in {
-    animation: scaleIn 0.6s ease-out forwards;
+    animation: fadeInUp 0.4s ease-out forwards;
 }
 
-/* Performance-optimized transform animations */
-.transform-3d {
-    transform-style: preserve-3d;
-    perspective: 1000px;
-}
-
-/* Hardware-accelerated transforms */
+/* Reduced transform complexity */
+.transform-3d,
 .accelerated-transform {
-    will-change: transform, opacity;
     transform: translateZ(0);
+    will-change: opacity, transform;
 }
 
 /* Smooth scroll behavior */
@@ -516,60 +499,17 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Reduced motion support for accessibility */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-    
-    .hero::after,
-    .hero-logo,
-    .splash-logo,
-    .loading-indicator,
-    .particle,
-    .icon,
-    .welcome-text {
-        animation: none !important;
-    }
-    
-    .cardLift:hover {
-        transform: none !important;
-        box-shadow: var(--shadow) !important;
-    }
-    
-    .btn-primary:hover,
-    .btn-secondary:hover {
-        transform: none !important;
-    }
-    
-    /* Disable all animations for accessibility */
-    .animate-fade-in,
-    .animate-slide-left,
-    .animate-slide-right,
-    .animate-scale-in,
-    .floatingIcon,
-    .pulseCTA,
-    .cardLift,
-    .service-card,
-    .health-tip-card,
-    .contact-card,
-    .testimonial-card,
-    .trust-item {
-        animation: none !important;
-        transform: none !important;
-    }
-    
-    /* Disable hover effects for accessibility */
-    .service-card:hover,
-    .health-tip-card:hover,
-    .contact-card:hover,
-    .testimonial-card:hover,
-    .trust-item:hover {
-        transform: none !important;
-        box-shadow: var(--shadow) !important;
-    }
+/* REMOVED: Reduced motion section moved to bottom */
+
+/* SIMPLIFIED: Card hover effects */
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.health-tip-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
 }
 
 /* Hero Section */
@@ -2321,6 +2261,7 @@ footer {
 }
 
 @media (max-width: 768px) {
+    /* MOBILE OPTIMIZATIONS - SIMPLIFIED */
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -2354,28 +2295,19 @@ footer {
         transform: translateY(-8px) rotate(-45deg);
     }
     
+    /* Force single column for all grids on mobile */
     .trust-grid,
     .doctors-grid,
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .products-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-    
+    .services-grid,
+    .products-grid,
+    .testimonials-grid,
+    .contact-grid,
     .health-tips-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
     }
     
+    /* Simplified floating buttons */
     .floating-buttons {
         bottom: 20px;
         right: 20px;
@@ -2385,6 +2317,62 @@ footer {
         width: 50px;
         height: 50px;
         font-size: 1.2rem;
+    }
+    
+    /* Touch-friendly buttons - minimum 44px tap target */
+    .btn-primary, .btn-secondary, .floating-btn {
+        min-height: 48px;
+        min-width: 48px;
+    }
+    
+    /* Simplified hero layout */
+    .hero-content {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+    
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+    
+    /* Disable 3D card transforms on mobile */
+    .cardLift:hover {
+        transform: translateY(-5px) !important;
+    }
+    
+    .service-card:hover,
+    .health-tip-card:hover,
+    .contact-card:hover {
+        transform: translateY(-5px) !important;
+    }
+    
+    /* Touch-optimized cards */
+    .service-icon,
+    .tip-icon {
+        transform-origin: center;
+        transition: transform 0.3s ease;
+    }
+    
+    .service-card:active .service-icon,
+    .health-tip-card:active .tip-icon {
+        transform: scale(0.95);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    /* Larger tap targets for small screens */
+    .btn-primary, .btn-secondary {
+        min-height: 44px;
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
     }
 }
 

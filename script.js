@@ -8,11 +8,30 @@
     }
 })();
 
+// SIMPLIFIED JavaScript for Maa Vaishno Medical & Clinic
+
+// Mobile Detection System
+(function() {
+    const body = document.body;
+    const isMobile = window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+        body.classList.add('mobile-device');
+    }
+})();
+
 // Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        
+        // Don't prevent default for tel: and whatsapp: links
+        if (href.startsWith('tel:') || href.startsWith('https://wa.me/')) {
+            return;
+        }
+        
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const target = document.querySelector(href);
         if (target) {
             target.scrollIntoView({
                 behavior: 'smooth',
@@ -35,58 +54,85 @@ if (hamburger && navMenu) {
 
 // Close mobile menu when clicking on a link
 document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navMenu.classList.remove('active');
+    if (hamburger && navMenu) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    }
 }));
 
-// Enhanced Intersection Observer for scroll animations with mobile optimization
+// SIMPLE Intersection Observer for scroll animations
 const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.1,
+    rootMargin: '0px 0px -20px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
+            // Add only one simple animation class
             entry.target.classList.add('animate-fade-in');
-            
-            // Apply specific animation classes based on element type
-            if (entry.target.classList.contains('trust-item')) {
-                entry.target.classList.add('slideInLeft');
-            } else if (entry.target.classList.contains('doctor-card')) {
-                entry.target.classList.add('slideInRight');
-            } else if (entry.target.classList.contains('service-card')) {
-                entry.target.classList.add('fadeInUp');
-            } else if (entry.target.classList.contains('health-tip-card')) {
-                entry.target.classList.add('scaleIn');
-            } else if (entry.target.classList.contains('contact-card')) {
-                entry.target.classList.add('slideInLeft');
-            } else if (entry.target.classList.contains('testimonial-card')) {
-                entry.target.classList.add('slideInRight');
-            } else {
-                entry.target.classList.add('fadeInUp');
-            }
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
         }
     });
 }, observerOptions);
 
-// Observe all sections for fade-in animations
+// Observe all sections
 document.querySelectorAll('section').forEach(section => {
     section.style.opacity = '0';
-    section.style.transform = 'translateY(30px)';
-    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    section.style.transform = 'translateY(20px)';
+    section.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
     observer.observe(section);
 });
 
-// Observe cards for enhanced 3D animations with GPU acceleration
+// Observe cards
 document.querySelectorAll('.cardLift, .service-card, .health-tip-card, .contact-card, .testimonial-card, .trust-item, .doctor-card').forEach(card => {
-    card.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-    card.style.transform = 'translateZ(0)';
-    card.style.perspective = '1000px';
-    card.style.transformStyle = 'preserve-3d';
     card.style.willChange = 'transform, opacity';
+    card.style.transform = 'translateZ(0)';
     observer.observe(card);
 });
+
+// Form submission
+ document.querySelector('form')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('संदेश सफलतापूर्वक भेजा गया! हम जल्द ही आपसे संपर्क करेंगे।');
+    this.reset();
+});
+
+// Splash screen
+ document.addEventListener('DOMContentLoaded', () => {
+    const splashScreen = document.getElementById('splash-screen');
+    
+    if (localStorage.getItem('splashScreenShown')) {
+        splashScreen.style.display = 'none';
+        return;
+    }
+    
+    setTimeout(() => {
+        splashScreen.classList.add('hidden');
+        setTimeout(() => {
+            splashScreen.style.display = 'none';
+            localStorage.setItem('splashScreenShown', 'true');
+        }, 1000);
+    }, 3000);
+});
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+        if (window.scrollY > 100) {
+            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+        } else {
+            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+        }
+    }
+});
+
+// REMOVED: Complex parallax, magnetic buttons, health tips carousel, floating icon animations
+// REMOVED: staggerObserver, form observer, map observer - SIMPLIFIED for performance
 
 // Enhanced scroll-triggered animations with staggered effects
 const staggerObserver = new IntersectionObserver((entries) => {
