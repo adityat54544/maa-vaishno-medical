@@ -250,10 +250,22 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
 }
 
-.nav-logo h1 {
-    font-size: 1.5rem;
-    margin: 0;
-    color: var(--primary-color);
+.nav-logo {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.nav-logo-img {
+    max-width: 120px;
+    height: auto;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.nav-logo-img:hover {
+    transform: scale(1.05) translateY(-2px);
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
 }
 
 .nav-menu {
@@ -1280,6 +1292,22 @@ footer {
     animation: logo3DAnimation 2.5s ease-out, glowPulse 3s ease-in-out infinite;
 }
 
+/* Enhanced Splash Screen Logo Animation */
+@keyframes enhancedLogoFloat {
+    0%, 100% {
+        transform: scale(1) translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05) translateY(-10px) rotate(5deg);
+        opacity: 0.95;
+    }
+}
+
+.logo {
+    animation: logo3DAnimation 2.5s ease-out, glowPulse 3s ease-in-out infinite, enhancedLogoFloat 4s ease-in-out infinite;
+}
+
 .welcome-text {
     color: white;
     font-family: 'Poppins', sans-serif;
@@ -1361,6 +1389,32 @@ footer {
     align-items: center;
     flex-wrap: wrap;
     gap: 2rem;
+}
+
+.footer-branding {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.footer-logo-img {
+    max-width: 80px;
+    height: auto;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.footer-logo-img:hover {
+    transform: scale(1.1) translateY(-2px);
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
 }
 
 .footer-branding p {
