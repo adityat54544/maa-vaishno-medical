@@ -196,6 +196,107 @@ footer p {
     margin-bottom: 0.5rem;
 }
 
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.95);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Animation classes */
+.animate-fade-in {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-left {
+    opacity: 0;
+    animation: fadeInLeft 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+}
+
+.pulse-hover:hover {
+    animation: pulse 0.3s ease-in-out;
+}
+
+/* Product card animations */
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform;
+}
+
+@media (hover: hover) {
+    .product-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+}
+
+.product-card:active {
+    transform: scale(0.98);
+}
+
+/* Form animations */
+.form-group {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.form-group.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Map container animation */
+.map-container {
+    transform: scale(0.95);
+    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.map-container.visible {
+    transform: scale(1);
+}
+
+/* Hero section animation */
+.hero {
+    animation: fadeInUp 0.8s ease-out;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     nav ul {
@@ -226,6 +327,27 @@ footer p {
     .contact-details p {
         font-size: 1rem;
     }
+    
+    /* Mobile-specific animations */
+    .animate-fade-in {
+        animation-duration: 0.4s;
+    }
+    
+    .animate-fade-left {
+        animation-duration: 0.4s;
+    }
+    
+    .product-card {
+        transition: transform 0.2s ease;
+    }
+    
+    .product-card:active {
+        transform: scale(0.98);
+    }
+    
+    .form-group {
+        transition: all 0.3s ease;
+    }
 }
 
 @media (max-width: 480px) {
@@ -255,5 +377,10 @@ footer p {
     input[type="tel"],
     textarea {
         font-size: 0.9rem;
+    }
+    
+    /* Extra mobile optimizations */
+    .map-container {
+        transition: transform 0.4s ease;
     }
 }
