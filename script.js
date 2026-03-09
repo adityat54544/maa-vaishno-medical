@@ -146,3 +146,27 @@ document.addEventListener('DOMContentLoaded', () => {
         floatingButtons.style.transition = 'all 0.5s ease';
     }
 });
+
+// Welcome Splash Screen Management
+document.addEventListener('DOMContentLoaded', () => {
+    const splashScreen = document.getElementById('splash-screen');
+    
+    // Check if splash screen has been shown before
+    if (localStorage.getItem('splashScreenShown')) {
+        // Hide splash screen immediately if already shown
+        splashScreen.style.display = 'none';
+        return;
+    }
+    
+    // Set timeout for splash screen fade out
+    setTimeout(() => {
+        // Add hidden class to trigger fade out animation
+        splashScreen.classList.add('hidden');
+        
+        // After animation completes, hide completely and mark as shown
+        setTimeout(() => {
+            splashScreen.style.display = 'none';
+            localStorage.setItem('splashScreenShown', 'true');
+        }, 1000);
+    }, 3000); // 3 seconds
+});
