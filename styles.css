@@ -256,14 +256,14 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0 15px;
 }
 
-.nav-logo-img {
-    max-width: 120px;
-    height: auto;
+.navbar-logo {
+    height: 50px;
+    width: auto;
     transition: all 0.3s ease;
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
 }
 
-.nav-logo-img:hover {
+.navbar-logo:hover {
     transform: scale(1.05) translateY(-2px);
     filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
 }
@@ -1249,9 +1249,29 @@ footer {
     transform-style: preserve-3d;
 }
 
-.logo {
-    width: 200px;
+.hero-logo {
+    height: 140px;
+    width: auto;
+    animation: logo3DAnimation 2.5s ease-out;
+    filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.6));
+    will-change: transform, box-shadow;
+}
+
+.footer-logo {
+    height: 70px;
+    width: auto;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.footer-logo:hover {
+    transform: scale(1.1) translateY(-2px);
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+}
+
+.splash-logo {
     height: 200px;
+    width: auto;
     animation: logo3DAnimation 2.5s ease-out;
     filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.6));
     will-change: transform, box-shadow;
@@ -1405,18 +1425,6 @@ footer {
     padding: 10px;
 }
 
-.footer-logo-img {
-    max-width: 80px;
-    height: auto;
-    transition: all 0.3s ease;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-}
-
-.footer-logo-img:hover {
-    transform: scale(1.1) translateY(-2px);
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
-}
-
 .footer-branding p {
     margin-bottom: 0.5rem;
     font-size: 1.1rem;
@@ -1531,6 +1539,25 @@ footer {
     100% {
         box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         transform: scale(1);
+    }
+}
+
+/* Logo Responsive Design */
+@media (max-width: 768px) {
+    .navbar-logo {
+        height: 40px;
+    }
+    
+    .hero-logo {
+        height: 100px;
+    }
+    
+    .footer-logo {
+        height: 50px;
+    }
+    
+    .splash-logo {
+        height: 150px;
     }
 }
 
