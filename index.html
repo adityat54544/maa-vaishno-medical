@@ -3,59 +3,334 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>माँ वैष्णो मेडिकल स्टोर</title>
+    <title>माँ वैष्णो मेडिकल स्टोर - बहादुरपुर की विश्वसनीय स्वास्थ्य सेवा</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>माँ वैष्णो मेडिकल स्टोर</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">होम</a></li>
-                <li><a href="about.html">हमारे बारे में</a></li>
-                <li><a href="services.html">सेवाएँ</a></li>
-                <li><a href="products.html">उत्पाद</a></li>
-                <li><a href="contact.html">संपर्क करें</a></li>
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+        <a href="tel:+919235325722" class="floating-btn call-btn pulseCTA" title="कॉल करें">
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="https://wa.me/919235325722" class="floating-btn whatsapp-btn" target="_blank" rel="noopener noreferrer" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>माँ वैष्णो मेडिकल</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#hero" class="nav-link">होम</a></li>
+                <li><a href="#trust" class="nav-link">हमारे बारे में</a></li>
+                <li><a href="#doctors" class="nav-link">डॉक्टर</a></li>
+                <li><a href="#services" class="nav-link">सेवाएँ</a></li>
+                <li><a href="#products" class="nav-link">दवाएँ</a></li>
+                <li><a href="#schedule" class="nav-link">समय</a></li>
+                <li><a href="#contact" class="nav-link">संपर्क</a></li>
             </ul>
-        </nav>
-    </header>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
     <main>
-        <section class="hero animate-fade-in">
-            <h2>अब आपके शहर बहादुरपुर में उच्च स्तरीय स्वास्थ्य सेवाएँ!</h2>
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <div class="hero-text fadeUp">
+                    <h1>उच्च स्तरीय स्वास्थ्य सेवाएँ</h1>
+                    <p>AIIMS और KGMU के भूतपूर्व रेजिडेंट डॉक्टर्स के साथ</p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-label">वर्षों का अनुभव</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">विशेषज्ञ डॉक्टर</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">₹100</span>
+                            <span class="stat-label">सस्ती दर</span>
+                        </div>
+                    </div>
+                    <div class="hero-cta">
+                        <a href="#contact" class="btn-primary pulseCTA">अभी कॉल करें</a>
+                        <a href="#doctors" class="btn-secondary">डॉक्टर देखें</a>
+                    </div>
+                </div>
+                <div class="hero-image slideInRight">
+                    <div class="doctor-card hero-doctor">
+                        <div class="doctor-info">
+                            <h3>डॉ० एस.पी. सिंह</h3>
+                            <p>M.B.B.S., M.D. Gen Medicine</p>
+                            <span class="specialty">हृदय रोग, शुगर, थायराइड</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
-        <section class="doctors">
-            <h2>डॉक्टर सेवाएँ</h2>
-            <div class="doctor">
-                <h3>डॉ० एस.पी. सिंह (M.B.B.S., M.D. Gen Medicine)</h3>
-                <p>भूतपूर्व सीनियर रेजिडेंट, AIIMS रायबरेली एवं KGMU लखनऊ</p>
-                <p>विशेषज्ञ: हृदय रोग, शुगर एवं थायराइड</p>
-            </div>
-            <div class="doctor">
-                <h3>डॉ० एन. खान (M.B.B.S., M.D. Gen Medicine)</h3>
-                <p>भूतपूर्व सीनियर रेजिडेंट AIIMS रायबरेली, सफदरजंग हॉस्पिटल (नई दिल्ली) एवं आर्मी बेस हॉस्पिटल (दिल्ली कैंट)</p>
-            </div>
-            <div class="doctor">
-                <h3>डॉ० निखिल प्रसाद (दंत रोग विशेषज्ञ)</h3>
-                <p>भूतपूर्व जूनियर रेजिडेंट, AIIMS रायबरेली (दांतों के विशेषज्ञ)</p>
-            </div>
-            <div class="schedule">
-                <h3>ओ.पी.डी. विवरण</h3>
-                <p>दिन: प्रत्येक बुधवार एवं शनिवार</p>
-                <p>समय: दोपहर 2:00 बजे से सायं 4:00 बजे तक</p>
-                <p>परामर्श शुल्क: मात्र ₹100/-</p>
+
+        <!-- Trust Indicators -->
+        <section id="trust" class="trust-section">
+            <div class="container">
+                <h2 class="section-title fadeUp">हम पर भरोसा क्यों करें?</h2>
+                <div class="trust-grid">
+                    <div class="trust-item slideInLeft">
+                        <i class="fas fa-award"></i>
+                        <h3>प्रतिष्ठित शिक्षा</h3>
+                        <p>AIIMS रायबरेली और KGMU लखनऊ से प्रशिक्षित</p>
+                    </div>
+                    <div class="trust-item slideInUp">
+                        <i class="fas fa-user-md"></i>
+                        <h3>अनुभवी डॉक्टर</h3>
+                        <p>15+ वर्षों का क्लिनिकल अनुभव</p>
+                    </div>
+                    <div class="trust-item slideInRight">
+                        <i class="fas fa-heartbeat"></i>
+                        <h3>सस्ती दरें</h3>
+                        <p>सिर्फ ₹100 में विशेषज्ञ परामर्श</p>
+                    </div>
+                </div>
             </div>
         </section>
-        <section class="contact-info">
-            <h2>संपर्क करें</h2>
-            <p>स्थान: तिलोई रोड, बहादुरपुर, अमेठी</p>
-            <p>स्टोर मोबाईल: 9415931363</p>
-            <p>कॉल: +91 9235325722</p>
+
+        <!-- Doctors Section -->
+        <section id="doctors" class="doctors-section">
+            <div class="container">
+                <h2 class="section-title fadeUp">हमारे विशेषज्ञ</h2>
+                <div class="doctors-grid">
+                    <div class="doctor-card cardLift">
+                        <div class="doctor-avatar">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="doctor-info">
+                            <h3>डॉ० एस.पी. सिंह</h3>
+                            <p>M.B.B.S., M.D. Gen Medicine</p>
+                            <div class="specialties">
+                                <span class="badge">हृदय रोग</span>
+                                <span class="badge">शुगर</span>
+                                <span class="badge">थायराइड</span>
+                            </div>
+                            <div class="doctor-qualifications">
+                                <p>AIIMS रायबरेली, KGMU लखनऊ</p>
+                            </div>
+                            <a href="#contact" class="btn-primary">परामर्श बुक करें</a>
+                        </div>
+                    </div>
+
+                    <div class="doctor-card cardLift">
+                        <div class="doctor-avatar">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="doctor-info">
+                            <h3>डॉ० एन. खान</h3>
+                            <p>M.B.B.S., M.D. Gen Medicine</p>
+                            <div class="specialties">
+                                <span class="badge">सामान्य चिकित्सा</span>
+                                <span class="badge">परिवार चिकित्सा</span>
+                            </div>
+                            <div class="doctor-qualifications">
+                                <p>AIIMS रायबरेली, सफदरजंग हॉस्पिटल</p>
+                            </div>
+                            <a href="#contact" class="btn-primary">परामर्श बुक करें</a>
+                        </div>
+                    </div>
+
+                    <div class="doctor-card cardLift">
+                        <div class="doctor-avatar">
+                            <i class="fas fa-tooth"></i>
+                        </div>
+                        <div class="doctor-info">
+                            <h3>डॉ० निखिल प्रसाद</h3>
+                            <p>दंत रोग विशेषज्ञ</p>
+                            <div class="specialties">
+                                <span class="badge">दांतों का इलाज</span>
+                                <span class="badge">दंत सर्जरी</span>
+                            </div>
+                            <div class="doctor-qualifications">
+                                <p>AIIMS रायबरेली</p>
+                            </div>
+                            <a href="#contact" class="btn-primary">परामर्श बुक करें</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services-section">
+            <div class="container">
+                <h2 class="section-title fadeUp">हमारी सेवाएँ</h2>
+                <div class="services-grid">
+                    <div class="service-card cardLift">
+                        <div class="service-icon floatingIcon">
+                            <i class="fas fa-stethoscope"></i>
+                        </div>
+                        <h3>डॉक्टर परामर्श</h3>
+                        <p>सामान्य चिकित्सा, हृदय रोग, शुगर, थायराइड और दंत रोग</p>
+                    </div>
+                    <div class="service-card cardLift">
+                        <div class="service-icon floatingIcon">
+                            <i class="fas fa-pills"></i>
+                        </div>
+                        <h3>फार्मेसी</h3>
+                        <p>विश्वसनीय दवाएँ, प्रिस्क्रिप्शन दवाएँ, स्वास्थ्य उत्पाद</p>
+                    </div>
+                    <div class="service-card cardLift">
+                        <div class="service-icon floatingIcon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>सुविधाजनक स्थान</h3>
+                        <p>तिलोई रोड, बहादुरपुर, अमेठी में स्थित</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OPD Schedule -->
+        <section id="schedule" class="schedule-section">
+            <div class="container">
+                <h2 class="section-title fadeUp">ओ.पी.डी. समय</h2>
+                <div class="schedule-card pulseCTA">
+                    <div class="schedule-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="schedule-info">
+                        <h3>प्रत्येक बुधवार एवं शनिवार</h3>
+                        <p class="schedule-time">दोपहर 2:00 बजे से सायं 4:00 बजे तक</p>
+                        <p class="schedule-fee">परामर्श शुल्क: मात्र ₹100/-</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="products-section">
+            <div class="container">
+                <h2 class="section-title fadeUp">हमारे उत्पाद</h2>
+                <div class="products-grid">
+                    <div class="product-card cardLift">
+                        <div class="product-icon">
+                            <i class="fas fa-capsules"></i>
+                        </div>
+                        <h3>पैरासिटामोल 500mg</h3>
+                        <p>बुखार और दर्द</p>
+                        <div class="product-price">₹20</div>
+                    </div>
+                    <div class="product-card cardLift">
+                        <div class="product-icon">
+                            <i class="fas fa-syrup"></i>
+                        </div>
+                        <h3>एम्ब्रोफेक्स</h3>
+                        <p>खांसी</p>
+                        <div class="product-price">₹45</div>
+                    </div>
+                    <div class="product-card cardLift">
+                        <div class="product-icon">
+                            <i class="fas fa-tablets"></i>
+                        </div>
+                        <h3>ओमेप्राज़ोल 20mg</h3>
+                        <p>एसिडिटी</p>
+                        <div class="product-price">₹30</div>
+                    </div>
+                    <div class="product-card cardLift">
+                        <div class="product-icon">
+                            <i class="fas fa-capsules"></i>
+                        </div>
+                        <h3>डिक्लोफेनाक 50mg</h3>
+                        <p>दर्द और सूजन</p>
+                        <div class="product-price">₹25</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials-section">
+            <div class="container">
+                <h2 class="section-title fadeUp">हमारे मरीजों की राय</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card cardLift">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <p>"डॉक्टर सिंह ने मेरे दिल की समस्या का बहुत अच्छा इलाज किया। सस्ती दरों में बेहतरीन सेवा।"</p>
+                        <div class="testimonial-author">- राम कुमार</div>
+                    </div>
+                    <div class="testimonial-card cardLift">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <p>"मधुमेह की जांच के लिए आया था। डॉक्टर ने बहुत अच्छी सलाह दी। दुकान में दवाएँ भी बहुत सस्ती मिलती हैं।"</p>
+                        <div class="testimonial-author">- सीता देवी</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title fadeUp">हमसे जुड़ें</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="contact-card cardLift">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h3>हमारा पता</h3>
+                            <p>तिलोई रोड, बहादुरपुर, अमेठी</p>
+                        </div>
+                        <div class="contact-card cardLift">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h3>संपर्क करें</h3>
+                            <p>स्टोर: 9415931363</p>
+                            <p>कॉल: +91 9235325722</p>
+                        </div>
+                        <div class="contact-card cardLift">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h3>समय</h3>
+                            <p>सुबह 9:00 बजे से शाम 8:00 बजे तक</p>
+                        </div>
+                    </div>
+                    <div class="contact-map">
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d223.9172591479708!2d81.5208253369798!3d26.26700988170892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399a535b88a0d5e7%3A0x3b5cdc18cee81b60!2sMaaVaishno%20Medical%20Store!5e0!3m2!1sen!2sin!4v1773033424369!5m2!1sen!2sin" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
+
     <footer>
-        <p>अच्छे स्वास्थ्य की ओर एक कदम बढ़ाएं। आज ही संपर्क करें! ❤️✨</p>
-        <p>Regard: माँ वैष्णो मेडिकल स्टोर</p>
+        <div class="container">
+            <p>अच्छे स्वास्थ्य की ओर एक कदम बढ़ाएं। आज ही संपर्क करें! ❤️✨</p>
+            <div class="footer-social">
+                <a href="tel:+919235325722" class="social-btn">
+                    <i class="fas fa-phone"></i> कॉल करें
+                </a>
+                <a href="https://wa.me/919235325722" class="social-btn" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+        </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
