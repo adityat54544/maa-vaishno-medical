@@ -211,6 +211,16 @@ footer p {
     --shadow-hover: 0 10px 25px rgba(0,0,0,0.15);
     --border-radius: 12px;
     --transition-speed: 0.3s;
+    --glass-bg: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+}
+
+/* Mobile Device Specific Variables */
+:root.mobile-device {
+    --glass-bg: rgba(255, 255, 255, 0.12);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
 }
 
 /* Typography */
@@ -533,13 +543,40 @@ html {
     .btn-secondary:hover {
         transform: none !important;
     }
+    
+    /* Disable all animations for accessibility */
+    .animate-fade-in,
+    .animate-slide-left,
+    .animate-slide-right,
+    .animate-scale-in,
+    .floatingIcon,
+    .pulseCTA,
+    .cardLift,
+    .service-card,
+    .health-tip-card,
+    .contact-card,
+    .testimonial-card,
+    .trust-item {
+        animation: none !important;
+        transform: none !important;
+    }
+    
+    /* Disable hover effects for accessibility */
+    .service-card:hover,
+    .health-tip-card:hover,
+    .contact-card:hover,
+    .testimonial-card:hover,
+    .trust-item:hover {
+        transform: none !important;
+        box-shadow: var(--shadow) !important;
+    }
 }
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: radial-gradient(circle at 20% 20%, #0ea5e9, #22c55e);
     background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
+    animation: liquidGradient 20s ease-in-out infinite;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -548,7 +585,7 @@ html {
     overflow: hidden;
 }
 
-@keyframes gradientBG {
+@keyframes liquidGradient {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
@@ -741,12 +778,15 @@ html {
     opacity: 1;
 }
 
-/* Enhanced Service Cards with 3D Tilt */
+/* Enhanced Service Cards with Glassmorphism */
 .service-card {
-    background: var(--card-bg);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
     padding: 2rem;
     border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
     text-align: center;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateZ(0);
@@ -799,14 +839,16 @@ html {
     box-shadow: 0 15px 40px rgba(13, 110, 253, 0.6);
 }
 
-/* Enhanced Health Tip Cards */
+/* Enhanced Health Tip Cards with Glassmorphism */
 .health-tip-card {
-    background: var(--card-bg);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
     padding: 2rem;
     border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid #e9ecef;
     position: relative;
     overflow: hidden;
     transform: translateZ(0);
@@ -875,14 +917,16 @@ html {
     box-shadow: 0 12px 35px rgba(13, 110, 253, 0.6);
 }
 
-/* Enhanced Contact Cards */
+/* Enhanced Contact Cards with Glassmorphism */
 .contact-card {
-    background: var(--card-bg);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
     padding: 2rem;
     border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid #e9ecef;
     position: relative;
     overflow: hidden;
     transform: translateZ(0);
@@ -913,12 +957,15 @@ html {
     opacity: 1;
 }
 
-/* Enhanced Testimonial Cards */
+/* Enhanced Testimonial Cards with Glassmorphism */
 .testimonial-card {
-    background: var(--card-bg);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
     padding: 2rem;
     border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
     position: relative;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateZ(0);
@@ -950,13 +997,16 @@ html {
     opacity: 1;
 }
 
-/* Enhanced Trust Items */
+/* Enhanced Trust Items with Glassmorphism */
 .trust-item {
-    background: var(--card-bg);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
     padding: 2rem;
     border-radius: var(--border-radius);
     text-align: center;
-    box-shadow: var(--shadow);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateZ(0);
     perspective: 1000px;

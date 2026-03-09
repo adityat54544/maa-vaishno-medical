@@ -1,3 +1,13 @@
+// Mobile Detection System
+(function() {
+    const body = document.body;
+    const isMobile = window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+        body.classList.add('mobile-device');
+    }
+})();
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -29,7 +39,7 @@ document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', 
     navMenu.classList.remove('active');
 }));
 
-// Enhanced Intersection Observer for scroll animations
+// Enhanced Intersection Observer for scroll animations with mobile optimization
 const observerOptions = {
     threshold: 0.15,
     rootMargin: '0px 0px -50px 0px'
@@ -68,12 +78,13 @@ document.querySelectorAll('section').forEach(section => {
     observer.observe(section);
 });
 
-// Observe cards for enhanced 3D animations
+// Observe cards for enhanced 3D animations with GPU acceleration
 document.querySelectorAll('.cardLift, .service-card, .health-tip-card, .contact-card, .testimonial-card, .trust-item, .doctor-card').forEach(card => {
     card.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
     card.style.transform = 'translateZ(0)';
     card.style.perspective = '1000px';
     card.style.transformStyle = 'preserve-3d';
+    card.style.willChange = 'transform, opacity';
     observer.observe(card);
 });
 
@@ -97,12 +108,14 @@ document.querySelectorAll('.trust-grid > *, .doctors-grid > *, .services-grid > 
     item.style.opacity = '0';
     item.style.transform = 'translateY(40px)';
     item.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+    item.style.willChange = 'transform, opacity';
     staggerObserver.observe(item);
 });
 
 // Observe service icons for floating animations
 document.querySelectorAll('.floatingIcon').forEach(icon => {
     icon.style.transition = 'transform 0.3s ease';
+    icon.style.willChange = 'transform';
 });
 
 // Form submission handling
@@ -116,7 +129,8 @@ document.querySelector('form')?.addEventListener('submit', function(e) {
 const mapContainer = document.querySelector('.map-container');
 if (mapContainer) {
     mapContainer.style.transform = 'scale(0.95)';
-    mapContainer.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)';
+    mapContainer.style.transition = 'transform 0.6s cubic-bezier(0.25, 0, 0.25, 1)';
+    mapContainer.style.willChange = 'transform';
     
     const mapObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -143,7 +157,8 @@ const formObserver = new IntersectionObserver((entries) => {
 formGroups.forEach(group => {
     group.style.opacity = '0';
     group.style.transform = 'translateX(-20px)';
-    group.style.transition = 'all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
+    group.style.transition = 'all 0.4s cubic-bezier(0.25, 0, 0.25, 1)';
+    group.style.willChange = 'transform, opacity';
     formObserver.observe(group);
 });
 
@@ -213,3 +228,89 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }, 3000); // 3 seconds
 });
+
+// Parallax Depth System
+(function() {
+    const parallaxElements = document.querySelectorAll('[data-speed]');
+    
+    if (parallaxElements.length > 0) {
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.pageYOffset;
+            
+            parallaxElements.forEach(element => {
+                const speed = parseFloat(element.getAttribute('data-speed')) || 0.5;
+                const yPos = -(scrollPosition * speed);
+                element.style.transform = `translate3d(0, ${yPos}px, 0)`;
+            });
+        });
+    }
+})();
+
+// Magnetic CTA Button Interactions
+(function() {
+    const magneticButtons = document.querySelectorAll('.btn-primary, .btn-secondary, .floating-btn');
+    
+    magneticButtons.forEach(button => {
+        const rect = button.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const maxDistance = Math.max(rect.width, rect.height) / 2;
+        const maxMovement = 10; // Maximum movement in pixels
+        
+        button.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            
+            const distanceX = mouseX - centerX;
+            const distanceY = mouseY - centerY;
+            const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+            
+            if (distance < maxDistance) {
+                const movementX = (distanceX / maxDistance) * maxMovement;
+                const movementY = (distanceY / maxDistance) * maxMovement;
+                
+                button.style.transform = `translate3d(${movementX}px, ${movementY}px, 0) scale(1.02)`;
+            }
+        });
+        
+        button.addEventListener('mouseleave', () => {
+            button.style.transform = 'translate3d(0, 0, 0) scale(1)';
+        });
+    });
+})();
+
+// Health Tips Carousel Implementation
+(function() {
+    const healthTipsGrid = document.querySelector('.health-tips-grid');
+    const healthTipsCards = document.querySelectorAll('.health-tip-card');
+    
+    if (healthTipsGrid && healthTipsCards.length > 0) {
+        // Convert to horizontal scroll-snap layout for mobile
+        if (document.body.classList.contains('mobile-device')) {
+            healthTipsGrid.style.display = 'flex';
+            healthTipsGrid.style.overflow = 'auto';
+            healthTipsGrid.style.scrollSnapType = 'x mandatory';
+            healthTipsGrid.style.padding = '1rem 0';
+            healthTipsGrid.style.gap = '1rem';
+            healthTipsGrid.style.scrollBehavior = 'smooth';
+            
+            healthTipsCards.forEach(card => {
+                card.style.flex = '0 0 auto';
+                card.style.width = '80vw';
+                card.style.scrollSnapAlign = 'start';
+                card.style.transform = 'translateZ(0)';
+                card.style.willChange = 'transform, opacity';
+            });
+        }
+    }
+})();
+
+// Floating Icon Animation System
+(function() {
+    const floatingIcons = document.querySelectorAll('.floatingIcon, .tip-icon, .service-icon');
+    
+    floatingIcons.forEach((icon, index) => {
+        icon.style.animation = `floatingMotion 4s ease-in-out infinite ${index * 0.5}s`;
+        icon.style.willChange = 'transform';
+    });
+})();
